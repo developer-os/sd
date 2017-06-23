@@ -1,6 +1,6 @@
 package com.chen.dao.mapper;
 
-import model.User;
+import com.chen.pojo.User;
 
 public interface UserMapper {
     int deleteByPrimaryKey(Long id);
