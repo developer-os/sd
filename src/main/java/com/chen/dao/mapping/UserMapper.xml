@@ -161,4 +161,10 @@
         create_time = #{createTime,jdbcType=TIMESTAMP}
         where id = #{id,jdbcType=BIGINT}
     </update>
+    <select id="selectByLoginName" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from user
+        where name = #{name,jdbcType=NVARCHAR}
+    </select>
 </mapper>
