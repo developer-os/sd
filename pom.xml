@@ -297,9 +297,25 @@
                             <port>9999</port>
                         </httpConnector>
                         <scanIntervalSeconds>10</scanIntervalSeconds>
+                        <!--  <webDefaultXml>src/main/resources/webdefault.xml</webDefaultXml> -->
                         <webApp>
                             <contextPath>/sd</contextPath>
                         </webApp>
+                        <!--<webAppConfig>-->
+                        <!--<contextPath>/sd</contextPath>-->
+                        <!--&lt;!&ndash; <description>src/main/resources/webdefault.xml</description> &ndash;&gt;-->
+                        <!--<defaultsDescriptor>src/main/resources/webdefault.xml</defaultsDescriptor>-->
+                        <!--</webAppConfig>-->
+                        <!--<contextHandlers>-->
+                            <!--<contextHandler implementation="org.eclipse.jetty.maven.plugin.JettyWebAppContext">-->
+                                <!--<resourceBase>G:\\idea_workspace\\sd</resourceBase>-->
+                                <!--<defaultsDescriptor>webdefault.xml</defaultsDescriptor>-->
+                                <!--<contextPath>/sd</contextPath>-->
+                            <!--</contextHandler>-->
+                        <!--</contextHandlers>-->
+
+                        <!--<jettyConfig>src/main/resources/webdefault.xml</jettyConfig>-->
+                        <!--<webAppConfig>src/main/resources/webdefault.xml</webAppConfig>-->
                     </configuration>
                 </plugin>
                 <plugin>
