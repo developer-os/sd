@@ -10,6 +10,7 @@ import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -18,18 +19,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 
 @Controller
+//@RequestMapping(value = "login")
 public class LoginController {
     protected Logger logger = LogManager.getLogger(LoginController.class);
-    public String index(){
+
+    @RequestMapping("/")
+    public String index() {
         return "redirect:/index";
     }
+
+    @RequestMapping("/index")
+    public String index(Model model) {
+        return "index";
+    }
+
+    @RequestMapping("/gotoLogin")
+    public String goToLoignPage() {
+        return "login";
+    }
+
+    /*    @RequestMapping("/login")
+        public String login(){
+            return "forward:login";
+        }*/
     @RequestMapping("/login")
-    public Object loginPost(String username,String password) throws Exception {
+    public Object loginPost(String username, String password) throws Exception {
         logger.info("login ");
-        if(StringUtils.isEmpty(username)){
+        if (StringUtils.isEmpty(username)) {
             throw new Exception("user name is null");
         }
-        if(StringUtils.isEmpty(password)){
+        if (StringUtils.isEmpty(password)) {
             throw new Exception("pwd is null");
         }
         Subject user = SecurityUtils.getSubject();
@@ -37,19 +56,24 @@ public class LoginController {
         token.setRememberMe(true);
         try {
             user.login(token);
-        }catch (UnknownAccountException e){
-            throw new RuntimeException("the count not exit",e);
-        }catch (DisabledAccountException e){
-            throw new RuntimeException("account can't use",e);
-        }catch (IncorrectCredentialsException e){
-            throw new RuntimeException("pwd is wrong",e);
-        }catch (Throwable e){
-            throw new RuntimeException("other exception",e);
+        } catch (UnknownAccountException e) {
+            throw new RuntimeException("the count not exit", e);
+        } catch (DisabledAccountException e) {
+            throw new RuntimeException("account can't use", e);
+        } catch (IncorrectCredentialsException e) {
+            throw new RuntimeException("pwd is wrong", e);
+        } catch (Throwable e) {
+            throw new RuntimeException("other exception", e);
         }
         return null;
     }
-    public Object renderError(String msg){
+
+    public Object renderError(String msg) {
         return null;
     }
 
+    @RequestMapping("/rr")
+    public String userTest() {
+        return "login";
+    }
 }
