@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 
 @Controller
-//@RequestMapping(value = "login")
 public class LoginController {
     protected Logger logger = LogManager.getLogger(LoginController.class);
 
@@ -30,7 +29,7 @@ public class LoginController {
 
     @RequestMapping("/index")
     public String index(Model model) {
-        return "index";
+        return "forward:index.jsp";
     }
 
     @RequestMapping("/gotoLogin")
@@ -38,10 +37,6 @@ public class LoginController {
         return "login";
     }
 
-    /*    @RequestMapping("/login")
-        public String login(){
-            return "forward:login";
-        }*/
     @RequestMapping("/login")
     public Object loginPost(String username, String password) throws Exception {
         logger.info("login ");
