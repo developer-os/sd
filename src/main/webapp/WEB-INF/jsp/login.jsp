@@ -34,5 +34,6 @@
     <script src="js/jquery-3.2.1.min.js"></script>
 	<script src="js/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 	<script src="js/local/viewport.js"></script>
+    <script src='js/local/login.js'></script>
 </body>
 </html>
