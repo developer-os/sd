@@ -1,5 +1,6 @@
 package com.chen.controller;
 
+import com.chen.pojo.User;
 import com.chen.util.DigestUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -12,6 +13,7 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -38,16 +40,16 @@ public class LoginController {
     }
 
     @RequestMapping("/login")
-    public Object loginPost(String username, String password) throws Exception {
+    public Object loginPost(@RequestBody User loginUser) throws Exception {
         logger.info("login ");
-        if (StringUtils.isEmpty(username)) {
+        if (StringUtils.isEmpty(loginUser.getLoginName())) {
             throw new Exception("user name is null");
         }
-        if (StringUtils.isEmpty(password)) {
+        if (StringUtils.isEmpty(loginUser.getPassword())) {
             throw new Exception("pwd is null");
         }
         Subject user = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(username, DigestUtils.md5Hex(password).toCharArray());
+        UsernamePasswordToken token = new UsernamePasswordToken(loginUser.getLoginName(), DigestUtils.md5Hex(loginUser.getPassword()).toCharArray());
         token.setRememberMe(true);
         try {
             user.login(token);
