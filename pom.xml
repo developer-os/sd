@@ -203,11 +203,11 @@
             <version>1.4.0</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
-        <dependency>
+      <!--  <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
             <version>1.0.26</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
