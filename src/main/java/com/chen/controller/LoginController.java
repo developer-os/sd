@@ -16,6 +16,9 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created by Administrator on 2017/6/26 0026.
  */
@@ -40,7 +43,7 @@ public class LoginController {
     }
 
     @RequestMapping("/login")
-    public Object loginPost(@RequestBody User loginUser) throws Exception {
+    public Object loginPost(@RequestBody User loginUser, HttpServletRequest request) throws Exception {
         logger.info("login ");
         if (StringUtils.isEmpty(loginUser.getLoginName())) {
             throw new Exception("user name is null");
@@ -49,10 +52,11 @@ public class LoginController {
             throw new Exception("pwd is null");
         }
         Subject user = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(loginUser.getLoginName(), DigestUtils.md5Hex(loginUser.getPassword()).toCharArray());
+        UsernamePasswordToken token = new UsernamePasswordToken(loginUser.getLoginName(), loginUser.getPassword());
         token.setRememberMe(true);
         try {
             user.login(token);
+            request.getSession().setAttribute("user",loginUser);
         } catch (UnknownAccountException e) {
             throw new RuntimeException("the count not exit", e);
         } catch (DisabledAccountException e) {

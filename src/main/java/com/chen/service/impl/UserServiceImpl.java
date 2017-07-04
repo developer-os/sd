@@ -3,51 +3,59 @@ package com.chen.service.impl;
 import com.chen.dao.mapper.UserMapper;
 import com.chen.pojo.User;
 import com.chen.service.IUserService;
+import org.junit.Rule;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.security.Principal;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Administrator on 2017/6/25 0025.
  */
 public class UserServiceImpl implements IUserService {
-    @Autowired
-    private UserMapper userMapper;
 
-
-    @Override
     public List<User> selectByLoginName(User userVo) {
-       List<User> users = userMapper.selectByLoginName(userVo.getName());
-        return users;
+        return null;
     }
 
-    @Override
+    public List<User> selectByLoginName(String LoginName) {
+        return null;
+    }
+
     public void insertByVo(User userVo) {
 
     }
 
-    @Override
     public User selectVoById(Long id) {
         return null;
     }
 
-    @Override
     public void updateByVo(User userVo) {
 
     }
 
-    @Override
     public void updatePwdByUserId(Long userId, String md5Hex) {
 
     }
 
-    @Override
     public void selectDataGrid(User pageInfo) {
 
     }
 
-    @Override
     public void deleteUserById(Long id) {
 
+    }
+
+    public User getUserByName(String name) {
+        return null;
+    }
+
+    public Set<String> selectRulesByUserName(String username) {
+        return null;
+    }
+
+    public Set<String> selectPrincipalByUserName(String username) {
+        return null;
     }
 }
