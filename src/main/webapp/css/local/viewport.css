@@ -1,0 +1,12 @@
+/*
+@-ms-viewport     { width: device-width; }
+@-o-viewport      { width: device-width; }
+@viewport         { width: device-width; }*/
+.container {
+   width: 300px;
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+   /*top:450px;*/
+	margin-top: 16%;
+}
