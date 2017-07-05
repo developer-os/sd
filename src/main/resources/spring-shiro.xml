@@ -10,9 +10,17 @@
     </bean>
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
+        <property name="loginUrl" value="/gotoLogin"/>
+        <property name="successUrl" value="main"/>
         <property name="filterChainDefinitions">
             <value>
-                /login=anon
+                <!--/login=anon-->
+                <!--/admins/user/**=authc-->
+                <!--/user/admin*=authc-->
+                <!--/**=anon-->
+                /login = authc
+                /WEB/jsp = anon
+                <!--/** = WEB-->
             </value>
         </property>
     </bean>

@@ -34,8 +34,7 @@ public class UserServiceImplTest {
     @Test
     public void selectByLoginName1() throws Exception {
 //        IUserService userService  = new UserServiceImpl();
-        userService.selectByLoginName("admin");
-        System.out.print(111);
+        System.out.print(userService.selectByLoginName("admin").get(0).getPhone()+"==============================================");
     }
 
     @Test

@@ -38,7 +38,8 @@ public class MyRealm extends AuthorizingRealm{
         String principal = (String) authenticationToken.getPrincipal();
         List<User> users = userService.selectByLoginName(principal);
         if(users !=null && users.size()>0 ){
-            SimpleAuthenticationInfo myRealm = new SimpleAuthenticationInfo(users.get(1).getLoginName(), users.get(1).getPassword(), "myRealm");
+//            SimpleAuthenticationInfo myRealm = new SimpleAuthenticationInfo(users.get(0).getLoginName(), users.get(0).getPassword(), "myRealm");
+            SimpleAuthenticationInfo myRealm = new SimpleAuthenticationInfo(users.get(0).getLoginName(), "202cb962ac59075b964b07152d234b70", "myRealm");
             return myRealm;
         }else{
             return null;
