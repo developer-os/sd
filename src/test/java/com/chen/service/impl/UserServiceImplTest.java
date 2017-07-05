@@ -1,24 +1,77 @@
 package com.chen.service.impl;
 
+import com.chen.service.IUserService;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import static org.junit.Assert.*;
 
 /**
- * Created by Administrator on 2017/6/25 0025.
+ * Created by rchen7 on 2017/7/5.
  */
-
-//public class UserServiceImplTest extends BaseTest{
-public class UserServiceImplTest  {
-//    @Autowired
-//    IUserService userService;
-//    @Before
-//    public void tetBefor(){
-//
-//    }
-    @Test
-    public void t_selectByUserName(){
-//        User u=new User();
-//        u.setName("admin");
-//        List ulist=userService.selectByLoginName(u);
-        System.out.print(1);
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration({"classpath:spring.xml"})
+public class UserServiceImplTest {
+    @Autowired
+    private IUserService userService;
+    @Before
+    public void setUp() throws Exception {
     }
+
+    @After
+    public void tearDown() throws Exception {
+    }
+
+    @Test
+    public void selectByLoginName() throws Exception {
+    }
+
+    @Test
+    public void selectByLoginName1() throws Exception {
+//        IUserService userService  = new UserServiceImpl();
+        userService.selectByLoginName("admin");
+        System.out.print(111);
+    }
+
+    @Test
+    public void insertByVo() throws Exception {
+    }
+
+    @Test
+    public void selectVoById() throws Exception {
+    }
+
+    @Test
+    public void updateByVo() throws Exception {
+    }
+
+    @Test
+    public void updatePwdByUserId() throws Exception {
+    }
+
+    @Test
+    public void selectDataGrid() throws Exception {
+    }
+
+    @Test
+    public void deleteUserById() throws Exception {
+    }
+
+    @Test
+    public void getUserByName() throws Exception {
+    }
+
+    @Test
+    public void selectRulesByUserName() throws Exception {
+    }
+
+    @Test
+    public void selectPrincipalByUserName() throws Exception {
+    }
+
 }

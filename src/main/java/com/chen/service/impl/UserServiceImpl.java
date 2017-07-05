@@ -2,6 +2,7 @@ package com.chen.service.impl;
 
 import com.chen.dao.mapper.UserMapper;
 import com.chen.pojo.User;
+import com.chen.pojo.UserExample;
 import com.chen.service.IUserService;
 import org.junit.Rule;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +17,18 @@ import java.util.Set;
  */
 @Service
 public class UserServiceImpl implements IUserService {
+    @Autowired
+    UserMapper userMapper;
 
     public List<User> selectByLoginName(User userVo) {
         return null;
     }
 
     public List<User> selectByLoginName(String LoginName) {
-        return null;
+        UserExample userExample = new UserExample();
+        userExample.createCriteria().andLoginNameEqualTo(LoginName);
+        List<User> users = userMapper.selectByExample(userExample);
+        return users;
     }
 
     public void insertByVo(User userVo) {

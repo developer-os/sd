@@ -1,22 +1,22 @@
 package com.chen.dao.mapper;
 
-
 import com.chen.pojo.User;
-
+import com.chen.pojo.UserExample;
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface UserMapper {
-    int deleteByPrimaryKey(Long id);
+    long countByExample(UserExample example);
+
+    int deleteByExample(UserExample example);
 
     int insert(User record);
 
     int insertSelective(User record);
 
-    User selectByPrimaryKey(Long id);
+    List<User> selectByExample(UserExample example);
 
-    int updateByPrimaryKeySelective(User record);
+    int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
 
-    int updateByPrimaryKey(User record);
-
-    List<User> selectByLoginName(String user);
+    int updateByExample(@Param("record") User record, @Param("example") UserExample example);
 }
