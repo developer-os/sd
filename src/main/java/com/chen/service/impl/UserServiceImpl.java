@@ -5,6 +5,7 @@ import com.chen.pojo.User;
 import com.chen.service.IUserService;
 import org.junit.Rule;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.security.Principal;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.Set;
 /**
  * Created by Administrator on 2017/6/25 0025.
  */
+@Service
 public class UserServiceImpl implements IUserService {
 
     public List<User> selectByLoginName(User userVo) {
