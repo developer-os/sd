@@ -16,12 +16,12 @@ $(document).ready(function() {
 			dataType: 'json',
 			data: JSON.stringify(dataj),
 			success: function(data) {
-				alert(data);
+				  window.location.href = "main/manager";
 			},
 			error: function() {
-
+                 window.location.href = "login.jsp";
 			}
-		})
+		});
 
 	});
 
