@@ -18,8 +18,10 @@
                 <!--/admins/user/**=authc-->
                 <!--/user/admin*=authc-->
                 <!--/**=anon-->
-                /login = authc
-                /WEB/jsp = anon
+                /login = anon
+                /WEB/jsp/** = authc
+                /WEB/** = authc
+                /jsp/** = authc
                 <!--/** = WEB-->
             </value>
         </property>

@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,22 +28,8 @@ import javax.servlet.http.HttpServletRequest;
 public class LoginController {
     protected Logger logger = LogManager.getLogger(LoginController.class);
 
-    @RequestMapping("/")
-    public String index() {
-        return "redirect:/index";
-    }
-
-    @RequestMapping("/index")
-    public String index(Model model) {
-        return "forward:index.jsp";
-    }
-
-    @RequestMapping("/gotoLogin")
-    public String goToLoignPage() {
-        return "login";
-    }
-
     @RequestMapping("/login")
+    @ResponseBody
     public String loginPost(@RequestBody User loginUser, HttpServletRequest request) throws Exception {
         logger.info("login ");
         if (StringUtils.isEmpty(loginUser.getLoginName())) {
@@ -59,7 +46,9 @@ public class LoginController {
             user.login(token);
             request.getSession().setAttribute("user",loginUser);
             logger.info("============================login success==================================================");
-            return "admin";
+//            return "forward:/jsp/admin.jsp";
+            return "success";
+//            return "redirect:/admin"
         } catch (UnknownAccountException e) {
             throw new RuntimeException("the count not exit", e);
         } catch (DisabledAccountException e) {
@@ -71,12 +60,12 @@ public class LoginController {
         }
     }
 
-    public Object renderError(String msg) {
-        return null;
-    }
+//    public Object renderError(String msg) {
+//        return null;
+//    }
 
-    @RequestMapping("/rr")
-    public String userTest() {
-        return "login";
-    }
+//    @RequestMapping("/rr")
+//    public String userTest() {
+//        return "login";
+//    }
 }
